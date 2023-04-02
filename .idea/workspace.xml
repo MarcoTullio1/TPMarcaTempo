@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f227be8-7a7b-4157-9729-ce4622004dc0" name="Changes" comment="Implementação do selectionSort">
+    <list default="true" id="7f227be8-7a7b-4157-9729-ce4622004dc0" name="Changes" comment="Parte 1 finalizada">
       <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
@@ -71,7 +71,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680400457562</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Parte 1 finalizada">
+      <created>1680457295408</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680457295408</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,6 +95,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Inicio do desnvolvimento de projeto." />
     <MESSAGE value="Implementação do selectionSort" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementação do selectionSort" />
+    <MESSAGE value="Parte 1 finalizada" />
+    <option name="LAST_COMMIT_MESSAGE" value="Parte 1 finalizada" />
   </component>
 </project>

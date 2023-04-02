@@ -8,77 +8,156 @@ import java.nio.charset.StandardCharsets;
 public class Main {
     public static void main(String[] args) {
 
-        int numExecucoes = 50;
-        int tamanhoVetor = 100000;
-        long[] compBubble = new long[numExecucoes];
-        long[] trocasBubble = new long[numExecucoes];
-        long[] compSelection = new long[numExecucoes];
-        long[] trocasSelection = new long[numExecucoes];
+        boolean parte1 = false;
 
-        try {
-            FileWriter fw = new FileWriter("resultados.txt");
-            BufferedWriter bw = new BufferedWriter(fw);
+        if(parte1)
+        {
+            //region parte 1
 
-            bw.write("Resultados da ordenação de vetores de " + tamanhoVetor + " elementos\n\n");
+            int numExecucoes = 50;
+            int tamanhoVetor = 100000;
+            long[] compBubble = new long[numExecucoes];
+            long[] trocasBubble = new long[numExecucoes];
+            long[] compSelection = new long[numExecucoes];
+            long[] trocasSelection = new long[numExecucoes];
+
+            try {
+                FileWriter fw = new FileWriter("parte 1.txt");
+                BufferedWriter bw = new BufferedWriter(fw);
+
+                bw.write("Resultados da ordenação de vetores de " + tamanhoVetor + " elementos\n\n");
 
 
-            for (int i = 0; i < numExecucoes; i++) {
-            System.out.println(i);
-            int[] vetor = geraVetor(tamanhoVetor);
-            int[] copia = vetor.clone();
+                for (int i = 0; i < numExecucoes; i++) {
+                    System.out.println(i);
+                    int[] vetor = geraVetor(tamanhoVetor);
+                    int[] copia = vetor.clone();
 
-            // Ordena o vetor com o algoritmo Bubble Sort e registra o número de comparações e trocas
-            long[] resultBubble = bubbleSort(vetor);
-            compBubble[i] = resultBubble[0];
-            trocasBubble[i] = resultBubble[1];
+                    // Ordena o vetor com o algoritmo Bubble Sort e registra o número de comparações e trocas
+                    long[] resultBubble = bubbleSort(vetor);
+                    compBubble[i] = resultBubble[0];
+                    trocasBubble[i] = resultBubble[1];
 
-            // Ordena a cópia do vetor com o algoritmo Selection Sort e registra o número de comparações e trocas
-            long[] resultSelection = selectionSort(copia);
-            compSelection[i] = resultSelection[0];
-            trocasSelection[i] = resultSelection[1];
+                    // Ordena a cópia do vetor com o algoritmo Selection Sort e registra o número de comparações e trocas
+                    long[] resultSelection = selectionSort(copia);
+                    compSelection[i] = resultSelection[0];
+                    trocasSelection[i] = resultSelection[1];
+                }
+
+                // Calcula as estatísticas das execuções
+                long maxCompBubble = calcularMax(compBubble);
+                long minCompBubble = calcularMin(compBubble);
+                long mediaCompBubble = calcularMedia(compBubble);
+                long maxTrocasBubble = calcularMax(trocasBubble);
+                long minTrocasBubble = calcularMin(trocasBubble);
+                long mediaTrocasBubble = calcularMedia(trocasBubble);
+                long maxCompSelection = calcularMax(compSelection);
+                long minCompSelection = calcularMin(compSelection);
+                long mediaCompSelection = calcularMedia(compSelection);
+                long maxTrocasSelection = calcularMax(trocasSelection);
+                long minTrocasSelection = calcularMin(trocasSelection);
+                long mediaTrocasSelection = calcularMedia(trocasSelection);
+
+                // Exibe os resultados
+                bw.write("Estatísticas do Bubble Sort:");
+                bw.write("\nMaior quantidade de comparações: " + maxCompBubble);
+                bw.write("\nMenor quantidade de comparações: " + minCompBubble);
+                bw.write("\nMédia de comparações: " + mediaCompBubble);
+                bw.write("\nMaior quantidade de trocas: " + maxTrocasBubble);
+                bw.write("\nMenor quantidade de trocas: " + minTrocasBubble);
+                bw.write("\nMédia de trocas: " + mediaTrocasBubble +"\n");
+
+                bw.write("\nEstatísticas do Selection Sort:");
+                bw.write("\nMaior quantidade de comparações: " + maxCompSelection);
+                bw.write("\nMenor quantidade de comparações: " + minCompSelection);
+                bw.write("\nMédia de comparações: " + mediaCompSelection);
+                bw.write("\nMaior quantidade de trocas: " + maxTrocasSelection);
+                bw.write("\nMenor quantidade de trocas: " + minTrocasSelection);
+                bw.write("\nMédia de trocas: " + mediaTrocasSelection);
+
+                bw.close();
+                fw.close();
+                System.out.println("Resultados salvos no arquivo parte 1.txt");
+            } catch (IOException e) {
+                System.out.println("Erro ao escrever no arquivo: " + e.getMessage());
+            }
+//endregion
         }
+       else {
+           //region parte2
+            try {
+                FileWriter fw = new FileWriter("parte 2.txt");
+                BufferedWriter bw = new BufferedWriter(fw);
 
-        // Calcula as estatísticas das execuções
-        long maxCompBubble = calcularMax(compBubble);
-        long minCompBubble = calcularMin(compBubble);
-        long mediaCompBubble = calcularMedia(compBubble);
-        long maxTrocasBubble = calcularMax(trocasBubble);
-        long minTrocasBubble = calcularMin(trocasBubble);
-        long mediaTrocasBubble = calcularMedia(trocasBubble);
-        long maxCompSelection = calcularMax(compSelection);
-        long minCompSelection = calcularMin(compSelection);
-        long mediaCompSelection = calcularMedia(compSelection);
-        long maxTrocasSelection = calcularMax(trocasSelection);
-        long minTrocasSelection = calcularMin(trocasSelection);
-        long mediaTrocasSelection = calcularMedia(trocasSelection);
+                bw.write("Resultados da busca sequencial \n\n");
 
-        // Exibe os resultados
-        bw.write("Estatísticas do Bubble Sort:");
-        bw.write("\nMaior quantidade de comparações: " + maxCompBubble);
-        bw.write("\nMenor quantidade de comparações: " + minCompBubble);
-        bw.write("\nMédia de comparações: " + mediaCompBubble);
-        bw.write("\nMaior quantidade de trocas: " + maxTrocasBubble);
-        bw.write("\nMenor quantidade de trocas: " + minTrocasBubble);
-        bw.write("\nMédia de trocas: " + mediaTrocasBubble +"\n");
+                for (int j = 0; j < 1000000; j++) {
+                    System.out.println(j);
+                    int[] vetor = geraVetor(10000);
+                    int numero = gerarNumeroAleatorio();
 
-        bw.write("\nEstatísticas do Selection Sort:");
-        bw.write("\nMaior quantidade de comparações: " + maxCompSelection);
-        bw.write("\nMenor quantidade de comparações: " + minCompSelection);
-        bw.write("\nMédia de comparações: " + mediaCompSelection);
-        bw.write("\nMaior quantidade de trocas: " + maxTrocasSelection);
-        bw.write("\nMenor quantidade de trocas: " + minTrocasSelection);
-        bw.write("\nMédia de trocas: " + mediaTrocasSelection);
+                    int posicao = 10001;
+                    for (int i = 0; i < vetor.length; i++) {
+                        if (vetor[i] == numero) {
+                            posicao = i;
+                            break;
+                        }
+                    }
 
-            bw.close();
-            fw.close();
-            System.out.println("Resultados salvos no arquivo resultados.txt");
-    } catch (IOException e) {
-            System.out.println("Erro ao escrever no arquivo: " + e.getMessage());
-        }        }
+                    bw.write("\nNúmero sorteado: " + numero);
+                    bw.write("\nPosição encontrada: " + posicao);
+                }
+
+                bw.close();
+                fw.close();
+                System.out.println("Resultados salvos no arquivo parte 2.txt");
+
+                int[] contadores = new int[11000];
+
+                for (int i = 0; i < 1000000; i++) {
+                    int numero = gerarNumeroAleatorio() % contadores.length;
+                    contadores[numero]++;
+                }
+
+                fw = new FileWriter("parte 3.txt");
+                bw = new BufferedWriter(fw);
+
+                bw.write("\nResultados da contagem dos números sorteados\n\n");
+
+                int soma = 0;
+                for (int i = 0; i < contadores.length / 500; i++) {
+                    for (int j = i * 500; j < Math.min((i + 1) * 500, contadores.length); j++) {
+                        soma += contadores[j];
+                    }
+                    bw.write("\nSoma dos contadores de " + (i * 500 + 1) + " a " + Math.min((i + 1) * 500, contadores.length) + ": " + soma + "\n");
+                    soma = 0; // reinicializa a variável soma para a próxima iteração
+                }
+
+                bw.close();
+                fw.close();
+                System.out.println("Resultados salvos no arquivo parte 3.txt");
+
+            } catch (IOException e) {
+                System.out.println("Erro ao escrever no arquivo: " + e.getMessage());
+            }
+
+            }
+    }
 
 
+    public static int gerarNumeroAleatorio() {
+        Random random = new Random();
+        return random.nextInt(11000) + 1;
+    }
 
-    // Arrays.stream(geraVetor(100000)).forEach(z-> System.out.println(z));
+    public static int buscarSequencial(int[] vetor, int numero) {
+        for (int i = 0; i < vetor.length; i++) {
+            if (vetor[i] == numero) {
+                return i;
+            }
+        }
+        return 10001; // caso o número não seja encontrado, retorna a posição 10.001
+    }
 
 
     private static int[] geraVetor(int qtdValores) {
